@@ -1,4 +1,5 @@
 package Lab_8;
+import java.lang.Math;
 
 public class InsufficientFundsException extends Exception {
     //Attributes
@@ -9,7 +10,7 @@ public class InsufficientFundsException extends Exception {
     public InsufficientFundsException() {}
 
     public InsufficientFundsException(double amount) {
-        this.amount = amount;
+        this.amount = Math.abs(amount);
     }
 
     //Get

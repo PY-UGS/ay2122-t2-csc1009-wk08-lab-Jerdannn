@@ -21,8 +21,17 @@ public class CheckingAccount {
 
     //Set
     public void deposit(float bal) {
-        this.balance += bal;
-        System.out.println("Your current balance is: $" + this.balance);
+        try {
+            float startBal = bal;
+            //The depositing amount should not be <= 0
+            if (startBal <= 0) { throw new InsufficientFundsException(); }
+            //Done after the exception handling
+            this.balance += bal;
+            System.out.println("Your current balance is: $" + this.balance);
+        }
+        catch (InsufficientFundsException e) {
+            System.out.println("You cannot deposit an amount less than 0");
+        }
     }
 
     public void withdraw(float bal) {
@@ -30,6 +39,7 @@ public class CheckingAccount {
             float finalBal = this.balance - bal;
             //The remaining balance should not be < 0
             if (finalBal < 0) { throw new InsufficientFundsException(finalBal); }
+            //Done after the exception handling
             this.balance -= bal;
             System.out.println("Your current balance is: $" + this.balance);
         }

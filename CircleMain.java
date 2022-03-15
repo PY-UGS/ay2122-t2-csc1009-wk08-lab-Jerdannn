@@ -11,8 +11,8 @@ public class CircleMain {
             double userArea = c.getArea();
             userInput.close();
 
-            //Radius needs to be > 0
-            if (userRadius < 0) { 
+            //Radius needs to be >= 0
+            if (userRadius <= 0) {
                 throw new IllegalArgumentException();
             }
             //Area needs to be <= 1000
